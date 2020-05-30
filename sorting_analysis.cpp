@@ -20,12 +20,9 @@ void printC(iter b, iter e)
 
 void bubbleSort(std::vector<int> & v)
 {
-	for (int i = (v.size() - 1); i >= 0; i--)
-	{
-		for (int j = 1; j <= i; j++)
-		{
-			if (v[j-1] > v[j])
-			{
+	for (int i = (int)(v.size()) - 1; i >= 0; i--) {
+		for (int j = 1; j <= i; j++) {
+			if (v[j-1] > v[j]) {
 				std::swap(v[j-1],v[j]);
 			}
 		}
@@ -51,8 +48,7 @@ void insertionSort(std::vector<int> & v)
 
 void selection_sort(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-    for (std::vector<int>::iterator i = begin; i != end; ++i)
-    {
+    for (std::vector<int>::iterator i = begin; i != end; ++i) {
         std::vector<int>::iterator mIter = std::min_element(i, end);
         std::iter_swap(i, mIter);
     }
