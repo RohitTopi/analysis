@@ -12,7 +12,8 @@ void printC(iter b, iter e)
     if(b <= e){
         while(b != e)
         {
-            std::cout << *b << " "; b++;
+            std::cout << (*b) << " ";
+            b++;
         }
     }
     std::cout << std::endl;
