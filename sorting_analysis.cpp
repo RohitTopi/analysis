@@ -70,7 +70,7 @@ void benchmark()
     std::mt19937 mt(rd());
     std::uniform_int_distribution<> dis(0, 999);
 
-    std::vector<int> v1(nElem), v2(nElem), v3(nElem);
+    std::vector<int> v1(nElem), v2(nElem), v3(nElem), v4(nElem);
     std::generate(v1.begin(), v1.end(), std::bind(dis, std::ref(mt)));
     std::generate(v2.begin(), v2.end(), std::bind(dis, std::ref(mt)));
     std::generate(v3.begin(), v3.end(), std::bind(dis, std::ref(mt)));
@@ -101,9 +101,9 @@ void benchmark()
     std::cout << ((    (check(v3)) ? ("success") : ("error")  )) << std::endl;
 
     std::chrono::steady_clock::time_point start4 = std::chrono::steady_clock::now();
-    insertion_sort(v4.begin(), v4.end());
+    selection_sort(v4.begin(), v4.end());
     std::chrono::steady_clock::time_point end4 = std::chrono::steady_clock::now();
-    std::cout << "insertion sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end4 - start4).count()
+    std::cout << "selection sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end4 - start4).count()
     << " microseconds\n";
     std::cout << ((    (check(v4)) ? ("success") : ("error")  )) << std::endl;
 }
