@@ -15,8 +15,8 @@ void printC(iter b, iter e)
             std::cout << (*b) << " ";
             b++;
         }
+        std::cout << std::endl;
     }
-    std::cout << std::endl;
 }
 
 void bubbleSort(std::vector<int> & v)
@@ -65,7 +65,7 @@ void benchmark()
 	const int nElem = 1000;
 	std::vector<int> v;
 
-	 // fill the vectors with random numbers
+	// fill the vectors with random numbers
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<> dis(0, 999);
@@ -77,37 +77,35 @@ void benchmark()
     std::generate(v4.begin(), v4.end(), std::bind(dis, std::ref(mt)));
 
 
-    //printC(v1.begin(), v1.end()); printC(v2.begin(), v2.end()); printC(v3.begin(), v3.end());
+    // printC(v1.begin(), v1.end()); printC(v2.begin(), v2.end()); printC(v3.begin(), v3.end());
 
     std::chrono::steady_clock::time_point start1 = std::chrono::steady_clock::now();
     bubbleSort(v1);
     std::chrono::steady_clock::time_point end1 = std::chrono::steady_clock::now();
     std::cout << "bubble sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1).count()
-              << " microseconds\n";
+    << " microseconds\n";
     std::cout << ((    (check(v1)) ? ("success") : ("error")  )) << std::endl;
 
     std::chrono::steady_clock::time_point start2 = std::chrono::steady_clock::now();
     merge_sort(v2.begin(), v2.end());
     std::chrono::steady_clock::time_point end2 = std::chrono::steady_clock::now();
     std::cout << "merge sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end2 - start2).count()
-              << " microseconds\n";
+    << " microseconds\n";
     std::cout << ((    (check(v2)) ? ("success") : ("error")  )) << std::endl;
 
     std::chrono::steady_clock::time_point start3 = std::chrono::steady_clock::now();
     insertionSort(v3);
     std::chrono::steady_clock::time_point end3 = std::chrono::steady_clock::now();
     std::cout << "insertion sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end3 - start3).count()
-              << " microseconds\n";
+    << " microseconds\n";
     std::cout << ((    (check(v3)) ? ("success") : ("error")  )) << std::endl;
 
     std::chrono::steady_clock::time_point start4 = std::chrono::steady_clock::now();
     insertionSort(v4.begin(), v4.end());
     std::chrono::steady_clock::time_point end4 = std::chrono::steady_clock::now();
     std::cout << "insertion sort:  " << nElem << " values time taken " << std::chrono::duration_cast<std::chrono::microseconds>(end4 - start4).count()
-              << " microseconds\n";
+    << " microseconds\n";
     std::cout << ((    (check(v4)) ? ("success") : ("error")  )) << std::endl;
-
-
 }
 
 int main()
